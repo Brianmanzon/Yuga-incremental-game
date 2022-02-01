@@ -1,23 +1,26 @@
 var gameData = {
     wood: 0,
     woodPerClick: 1,
-    woodPerClickCost: 10
+    hutPerClickCost: 20,
+    huts: 0
   }
 
 function gatherWood() {
     gameData.wood += gameData.woodPerClick
-    document.getElementById("woodGathered").innerHTML = gameData.wood+ " Wood gathered"
+    document.getElementById("woodGathered").innerHTML = gameData.wood+ " Wood"
   }
 
-function buyWoodPerClick() {
-    if (gameData.wood >= gameData.woodPerClickCost) {
-      gameData.wood -= gameData.woodPerClickCost
-      gameData.woodPerClick += 1
-      gameData.woodPerClickCost *= 2
-      document.getElementById("woodGathered").innerHTML = gameData.wood + " Wood gathered"
-      document.getElementById("perClickUpgrade").innerHTML = "Upgrade Axe (Currently Level " + gameData.woodPerClick + ") Cost: " + gameData.woodPerClickCost + " Wood"
+function buyHut() {
+    if (gameData.wood >= gameData.hutPerClickCost) {
+      gameData.wood -= gameData.hutPerClickCost
+      gameData.huts += 1
+      gameData.hutPerClickCost *= 2
+      document.getElementById("woodGathered").innerHTML = gameData.wood + " Wood"
+      document.getElementById("hutsCreated").innerHTML = gameData.huts + " Huts"
+      document.getElementById("buyHut").innerHTML = "Buy hut (Currently " + gameData.huts + ") Cost: " + gameData.hutPerClickCost + " Wood"
     }
   }
+
 var mainGameLoop = window.setInterval(function() {
     gatherWood()
   }, 1000)
